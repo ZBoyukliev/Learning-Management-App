@@ -126,9 +126,10 @@ input[type="color"] {
   /* hover:text-white-50 */
 }
 
-/* .nondashboard-navbar__search-icon {
-  @apply absolute left-3 sm:left-5 top-1/2 transform -translate-y-1/2 text-customgreys-dirtyGrey transition-all duration-300;
-} */
+.nondashboard-navbar__search-icon {
+  @apply absolute left-3 sm:left-5 top-1/2 transform -translate-y-1/2 transition-all duration-300;
+  /* text-customgreys-dirtyGrey */
+}
 
 /* .nondashboard-navbar__actions {
   @apply flex items-center gap-2 sm:gap-4;

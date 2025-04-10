@@ -17,7 +17,7 @@ const NonDashboardNavbar: any = () => {
             <div className="relative group">
               <Link
                 href="/search"
-                className="nondashboard-navbar__search-input bg-customgreys-secondarybg"
+                className="nondashboard-navbar__search-input bg-customgreys-secondarybg text-customgreys-dirtyGrey hover:bg-customgreys-darkerGrey hover:text-white-50"
                 scroll={false}
               >
                 <span className="hidden sm:inline">Search Courses</span>
