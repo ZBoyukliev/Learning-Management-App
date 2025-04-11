@@ -7,17 +7,17 @@ import React from "react";
 const NonDashboardNavbar: any = () => {
 
   return (
-    <nav className="nondashboard-navbar bg-customgreys-primarybg">
+    <nav className="nondashboard-navbar bg-[#1B1C22]">
       <div className="nondashboard-navbar__container">
         <div className="nondashboard-navbar__search">
-          <Link href="/" className="nondashboard-navbar__brand hover:text-customgreys-dirtyGrey;" scroll={false}>
+          <Link href="/" className="nondashboard-navbar__brand hover:text-[#3d3d3d];" scroll={false}>
             ZARKOB
           </Link>
           <div className="flex items-center gap-4">
             <div className="relative group">
               <Link
                 href="/search"
-                className="nondashboard-navbar__search-input bg-customgreys-secondarybg text-customgreys-dirtyGrey hover:bg-customgreys-darkerGrey hover:text-white-50"
+                className="nondashboard-navbar__search-input bg-[#25262F] text-[#3d3d3d] hover:bg-[#3d3d3d] hover:text-white"
                 scroll={false}
               >
                 <span className="hidden sm:inline">Search Courses</span>
