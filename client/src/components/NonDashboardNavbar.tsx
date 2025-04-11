@@ -10,7 +10,7 @@ const NonDashboardNavbar: any = () => {
     <nav className="nondashboard-navbar bg-[#1B1C22]">
       <div className="nondashboard-navbar__container">
         <div className="nondashboard-navbar__search">
-          <Link href="/" className="nondashboard-navbar__brand hover:text-[#3d3d3d];" scroll={false}>
+          <Link href="/" className="nondashboard-navbar__brand hover:text-[#6e6e6e];" scroll={false}>
             ZARKOB
           </Link>
           <div className="flex items-center gap-4">
@@ -24,7 +24,7 @@ const NonDashboardNavbar: any = () => {
                 <span className="sm:hidden">Search</span>
               </Link>
               <BookOpen
-                className="nondashboard-navbar__search-icon"
+                className="nondashboard-navbar__search-icon text-[#6e6e6e] cursor-pointer hover:cursor-pointer"
                 size={18}
               />
             </div>
