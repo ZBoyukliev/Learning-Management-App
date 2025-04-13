@@ -99,6 +99,15 @@ input[type="color"] {
   /* } */
 }
 
+/* NonDashboard Layout */
+.nondashboard-layout {
+  @apply flex flex-col min-h-screen w-full;
+}
+
+.nondashboard-layout__main {
+  @apply flex flex-grow w-full h-full justify-center items-center;
+}
+
 
 .nondashboard-navbar {
   @apply w-full flex justify-center;
