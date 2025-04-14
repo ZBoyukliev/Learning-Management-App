@@ -1,4 +1,5 @@
 import NonDashboardNavbar from "@/components/NonDashboardNavbar";
+import LandingComponent from "./(nondashboard)/landing/page";
 import Image from "next/image";
 
 export default function Home() {
@@ -6,7 +7,7 @@ export default function Home() {
     <div className="nondashboard-layout">
        <NonDashboardNavbar />
        <main className="nondashboard-layout__main">
-        {/* <Landing /> */}
+        <LandingComponent />
       </main>
     </div>
   );
