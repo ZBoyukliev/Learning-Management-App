@@ -292,3 +292,17 @@ input[type="color"] {
 .landing-skeleton__course-card {
   @apply h-[300px] rounded-lg;
 }
+
+
+/* Footer */
+.footer {
+  @apply bg-[#25262F] bottom-0 w-full py-8 mt-10 text-center text-sm;
+}
+
+.footer__links {
+  @apply mt-2;
+}
+
+.footer__link {
+  @apply text-[#b3b3fd] mx-2;
+}
