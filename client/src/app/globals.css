@@ -37,8 +37,8 @@ input[type="color"] {
 
 @layer base {
   :root {
-    /* --sidebar-background: theme("colors.customgreys.primarybg");
-    --sidebar-foreground: theme("colors.white.50");
+    /* --sidebar-background: theme("colors.customgreys.primarybg"); */
+    /* --sidebar-foreground: theme("colors.white.50");
     --sidebar-primary: theme("colors.primary.700");
     --sidebar-primary-foreground: theme("colors.white.50");
     --sidebar-accent: theme("colors.customgreys.darkerGrey");
