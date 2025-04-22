@@ -108,7 +108,6 @@ input[type="color"] {
   @apply flex flex-grow w-full h-full justify-center items-center;
 }
 
-
 .nondashboard-navbar {
   @apply w-full flex justify-center;
   /* bg-customgreys-primarybg */
@@ -168,7 +167,7 @@ input[type="color"] {
   /* hover:bg-primary-600 */
 }
 
-/* Landing Skeleton */
+/* Landing Page */
 .landing {
   @apply w-3/4;
 }
@@ -231,4 +230,65 @@ input[type="color"] {
 
 .landing__courses {
   @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Landing Skeleton */
+.landing-skeleton {
+  @apply w-3/4;
+}
+
+.landing-skeleton__hero {
+  @apply flex justify-between items-center mt-12 h-[500px] rounded-lg bg-[#25262F];
+}
+
+.landing-skeleton__hero-content {
+  @apply basis-1/2 px-16 mx-auto;
+}
+
+.landing-skeleton__title {
+  @apply h-8 w-48 mb-4;
+}
+
+.landing-skeleton__subtitle {
+  @apply h-4 w-96 mb-2;
+}
+
+.landing-skeleton__subtitle-secondary {
+  @apply h-4 w-72 mb-8;
+}
+
+.landing-skeleton__button {
+  @apply w-40 h-10;
+}
+
+.landing-skeleton__hero-image {
+  @apply basis-1/2 h-full rounded-r-lg;
+}
+
+.landing-skeleton__featured {
+  @apply mx-auto py-12 mt-10;
+}
+
+.landing-skeleton__featured-title {
+  @apply h-6 w-48 mb-4;
+}
+
+.landing-skeleton__featured-description {
+  @apply h-4 w-full max-w-2xl mb-8;
+}
+
+.landing-skeleton__tags {
+  @apply flex flex-wrap gap-4 mb-8;
+}
+
+.landing-skeleton__tag {
+  @apply w-24 h-6 rounded-full;
+}
+
+.landing-skeleton__courses {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+.landing-skeleton__course-card {
+  @apply h-[300px] rounded-lg;
 }

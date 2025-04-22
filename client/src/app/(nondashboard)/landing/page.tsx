@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useCarousel } from "@/hooks/useCarousel";
@@ -42,10 +42,20 @@ const LoadingSkeleton = () => {
 
 const LandingComponent = () => {
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const currentImage = useCarousel({ totalImages: 3 });
 
-  if (isLoading) return <LoadingSkeleton />;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) return <>
+    <LoadingSkeleton />
+  </>
 
   return (
     <motion.div
