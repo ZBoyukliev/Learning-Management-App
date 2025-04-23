@@ -99,6 +99,26 @@ input[type="color"] {
   /* } */
 }
 
+.bg-sidebar {
+  @apply bg-[#1B1C22];
+}
+
+/* Filepond */
+.filepond--panel-root {
+  @apply !bg-[#1B1C22];
+}
+
+.filepond--drop-label.filepond--drop-label label {
+  @apply cursor-pointer;
+}
+
+.filepond--drop-label {
+  @apply !text-[#d2d2d2];
+  @apply cursor-pointer;
+  @apply hover:!bg-[#17181D];
+  @apply hover:!text-[#ffffff];
+}
+
 /* NonDashboard Layout */
 .nondashboard-layout {
   @apply flex flex-col min-h-screen w-full;
