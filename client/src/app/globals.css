@@ -119,6 +119,31 @@ input[type="color"] {
   @apply hover:!text-[#ffffff];
 }
 
+/* Search Page */
+.search {
+  @apply flex flex-col bg-background text-foreground h-full mx-auto w-3/4;
+}
+
+.search__title {
+  @apply font-normal text-2xl mt-14;
+}
+
+.search__subtitle {
+  @apply text-gray-500 mb-3;
+}
+
+.search__content {
+  @apply w-full flex flex-col-reverse md:flex-row pb-8 pt-2 gap-8;
+}
+
+.search__courses-grid {
+  @apply basis-3/5 grid grid-cols-1 xl:grid-cols-2 gap-6 auto-rows-fr;
+}
+
+.search__selected-course {
+  @apply basis-2/5 min-w-[350px] h-fit border-2 border-[#9898fd] bg-[#25262F] overflow-hidden rounded-lg;
+}
+
 /* NonDashboard Layout */
 .nondashboard-layout {
   @apply flex flex-col min-h-screen w-full;
