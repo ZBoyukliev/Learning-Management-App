@@ -23,4 +23,4 @@ export const api = createApi({
     }),
   });
 
-  export const {} = api;
+  export const { useGetCourseQuery, useGetCoursesQuery} = api;
