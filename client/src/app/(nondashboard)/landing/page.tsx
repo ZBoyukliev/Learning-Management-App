@@ -6,6 +6,7 @@ import { useCarousel } from "@/hooks/useCarousel";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCoursesQuery } from "@/state/api";
+import CourseCardSearch from "@/components/CourseCardSearch";
 
 const LoadingSkeleton = () => {
   return (
@@ -129,10 +130,10 @@ const LandingComponent = () => {
                 viewport={{ amount: 0.4 }}
               >
                 Random Course
-                {/* <CourseCardSearch
+                <CourseCardSearch
                   course={course}
-                  onClick={() => handleCourseClick(course.courseId)}
-                /> */}
+                  // onClick={() => handleCourseClick(course.courseId)}
+                />
               </motion.div>
             ))}
         </div>
