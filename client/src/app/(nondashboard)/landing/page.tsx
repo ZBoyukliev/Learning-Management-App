@@ -7,6 +7,7 @@ import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetCoursesQuery } from "@/state/api";
 import CourseCardSearch from "@/components/CourseCardSearch";
+import { useRouter } from "next/navigation";
 
 const LoadingSkeleton = () => {
   return (
@@ -43,9 +44,15 @@ const LoadingSkeleton = () => {
 
 const LandingComponent = () => {
 
+  const router = useRouter();
   const currentImage = useCarousel({ totalImages: 3 });
   const { data: courses, isLoading, isError } = useGetCoursesQuery({});
-  console.log(courses)
+  
+  const handleCourseClick = (courseId: string) => {
+    router.push(`/search?id=${courseId}`, {
+      scroll: false,
+    });
+  };
 
   if (isLoading) return <>
     <LoadingSkeleton />
@@ -132,7 +139,7 @@ const LandingComponent = () => {
                 Random Course
                 <CourseCardSearch
                   course={course}
-                  // onClick={() => handleCourseClick(course.courseId)}
+                  onClick={() => handleCourseClick(course.courseId)}
                 />
               </motion.div>
             ))}
