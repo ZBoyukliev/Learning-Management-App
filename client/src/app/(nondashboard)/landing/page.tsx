@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useCarousel } from "@/hooks/useCarousel";
 import Image from "next/image";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useGetCoursesQuery } from "@/state/api";
 
 const LoadingSkeleton = () => {
   return (
@@ -42,16 +42,9 @@ const LoadingSkeleton = () => {
 
 const LandingComponent = () => {
 
-  const [isLoading, setIsLoading] = useState(true)
   const currentImage = useCarousel({ totalImages: 3 });
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000); // 2 seconds
-
-    return () => clearTimeout(timer);
-  }, []);
+  const { data: courses, isLoading, isError } = useGetCoursesQuery({});
+  console.log(courses)
 
   if (isLoading) return <>
     <LoadingSkeleton />
@@ -124,6 +117,24 @@ const LandingComponent = () => {
               {tag}
             </span>
           ))}
+        </div>
+        <div className="landing__courses">
+          {courses &&
+            courses.slice(0, 4).map((course, index) => (
+              <motion.div
+                key={course.courseId}
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                viewport={{ amount: 0.4 }}
+              >
+                Random Course
+                {/* <CourseCardSearch
+                  course={course}
+                  onClick={() => handleCourseClick(course.courseId)}
+                /> */}
+              </motion.div>
+            ))}
         </div>
       </motion.div>
     </motion.div>
