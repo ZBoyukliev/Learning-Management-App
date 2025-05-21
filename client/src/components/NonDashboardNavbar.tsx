@@ -9,6 +9,7 @@ import React from "react";
 const NonDashboardNavbar: any = () => {
   const { user } = useUser();
   const userRole = user?.publicMetadata?.userType as "student" | "teacher";
+  console.log(userRole)
 
   return (
     <nav className="nondashboard-navbar bg-[#1B1C22]">
