@@ -537,11 +537,11 @@ input[type="color"] {
 
 /* Dashboard Layout */
 .dashboard {
-  @apply min-h-screen w-full bg-customgreys-primarybg flex pl-52;
+  @apply min-h-screen w-full bg-customgreys-primarybg flex;
 }
 
 .dashboard__content {
-  @apply flex flex-1 overflow-hidden;
+  @apply flex flex-1 overflow-hidden ml-48;
 }
 
 .dashboard__main {
