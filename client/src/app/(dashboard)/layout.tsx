@@ -1,7 +1,7 @@
 "use client";
 import AppSidebar from "@/components/AppSidebar";
 import Loading from "@/components/Loading";
-// import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { useUser } from "@clerk/nextjs";
@@ -21,21 +21,21 @@ export default function DashboardLayout({
         pathname
     );
 
-    useEffect(() => {
-        if (isCoursePage) {
-            const match = pathname.match(/\/user\/courses\/([^\/]+)/);
-            setCourseId(match ? match[1] : null);
-        } else {
-            setCourseId(null);
-        }
-    }, [isCoursePage, pathname]);
+    // useEffect(() => {
+    //     if (isCoursePage) {
+    //         const match = pathname.match(/\/user\/courses\/([^\/]+)/);
+    //         setCourseId(match ? match[1] : null);
+    //     } else {
+    //         setCourseId(null);
+    //     }
+    // }, [isCoursePage, pathname]);
 
     if (!isLoaded) return <Loading />;
     if (!user) return <div>Please sign in to access this page.</div>;
 
     return (
         <SidebarProvider>
-            <div className="dashboard">
+            <div className="dashboard bg-red-600">
                 <AppSidebar />
                 <div className="dashboard__content">
                     {/* {courseId && <ChaptersSidebar />} */}
@@ -46,11 +46,11 @@ export default function DashboardLayout({
                         )}
                         style={{ height: "100vh" }}
                     >
-                        {/* <Navbar isCoursePage={isCoursePage} /> */}
+                        <Navbar isCoursePage={isCoursePage} />
                         <main className="dashboard__body">{children}</main>
                     </div>
                 </div>
             </div>
-        </SidebarProvider>
+         </SidebarProvider>
     );
 }

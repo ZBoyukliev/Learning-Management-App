@@ -537,7 +537,7 @@ input[type="color"] {
 
 /* Dashboard Layout */
 .dashboard {
-  @apply min-h-screen w-full bg-customgreys-primarybg flex;
+  @apply min-h-screen w-full bg-customgreys-primarybg flex pl-52;
 }
 
 .dashboard__content {
