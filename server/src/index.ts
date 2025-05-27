@@ -10,11 +10,9 @@ import {
   createClerkClient,
   requireAuth,
 } from "@clerk/express";
-import courseRoutes from "./routes/courseRoutes"
-
-
 /* ROUTE IMPORTS */
-
+import courseRoutes from "./routes/courseRoutes"
+import userClerkRoutes from "./routes/userClerkRoutes";
 
 /* CONFIGURATIONS */
 dotenv.config();
@@ -42,6 +40,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/courses", courseRoutes);
+app.use("/users/clerk", userClerkRoutes)
 
 /* SERVER */
 const port = process.env.PORT || 3000;
