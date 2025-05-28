@@ -92,4 +92,4 @@ export const api = createApi({
     }),
   });
 
-  export const { useGetCourseQuery, useGetCoursesQuery} = api;
+  export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery} = api;
