@@ -61,6 +61,19 @@ export const api = createApi({
     reducerPath: "api",
     tagTypes: ["Courses", "Users", "UserCourseProgress"],
     endpoints: (build) => ({
+        /* 
+    ===============
+    USER CLERK
+    =============== 
+    */
+    updateUser: build.mutation<User, Partial<User> & { userId: string }>({
+      query: ({ userId, ...updatedUser }) => ({
+        url: `users/clerk/${userId}`,
+        method: "PUT",
+        body: updatedUser,
+      }),
+      invalidatesTags: ["Users"],
+    }),
          /* ===============
                COURSES
          =============== */
