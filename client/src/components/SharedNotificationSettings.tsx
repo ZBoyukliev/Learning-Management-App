@@ -11,7 +11,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import Header from "./Header";
 import { Form } from "@/components/ui/form";
-// import { CustomFormField } from "./CustomFormField";
+import { CustomFormField } from "./CustomFormField";
 import { Button } from "@/components/ui/button";
 
 const SharedNotificationSettings = ({
@@ -66,8 +66,7 @@ const SharedNotificationSettings = ({
           className="notification-settings__form"
         >
           <div className="notification-settings__fields">
-            Custom fields
-            {/* <CustomFormField
+            <CustomFormField
               name="courseNotifications"
               label="Course Notifications"
               type="switch"
@@ -92,7 +91,7 @@ const SharedNotificationSettings = ({
                 { value: "daily", label: "Daily" },
                 { value: "weekly", label: "Weekly" },
               ]}
-            /> */}
+            />
           </div>
 
           <Button type="submit" className="notification-settings__submit">
