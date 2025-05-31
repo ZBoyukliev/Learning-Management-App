@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { BaseQueryApi, FetchArgs } from "@reduxjs/toolkit/query";
 import { User } from "@clerk/nextjs/server";
 import { Clerk } from "@clerk/clerk-js";
+import { toast } from "sonner";
 
 const customBaseQuery = async (
   args: string | FetchArgs,
@@ -28,7 +29,7 @@ const customBaseQuery = async (
         errorData?.message ||
         result.error.status.toString() ||
         "An error occurred";
-      // toast.error(`Error: ${errorMessage}`);
+      toast.error(`Error: ${errorMessage}`);
     }
 
     const isMutationRequest =
@@ -36,7 +37,7 @@ const customBaseQuery = async (
 
     if (isMutationRequest) {
       const successMessage = result.data?.message;
-      // if (successMessage) toast.success(successMessage);
+      if (successMessage) toast.success(successMessage);
     }
 
     if (result.data) {
