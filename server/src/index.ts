@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/courses", courseRoutes);
-app.use("/users/clerk", userClerkRoutes)
+app.use("/users/clerk", requireAuth(), userClerkRoutes)
 
 /* SERVER */
 const port = process.env.PORT || 3000;
