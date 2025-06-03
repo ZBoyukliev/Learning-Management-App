@@ -1,19 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Loading from "@/components/Loading";
+import WizardStepper from "@/components/WizardStepper";
+import { useCheckoutNavigation } from "@/hooks/useCheckoutNavigation";
+import { useUser } from "@clerk/nextjs";
+import React from "react";
 
-const CheckoutWizzard = () => {
+const CheckoutWizard = () => {
+  const { isLoaded } = useUser();
+  const { checkoutStep } = useCheckoutNavigation();
+
+  if (!isLoaded) return <Loading />;
+
+  const renderStep = () => {
+    switch (checkoutStep) {
+      case 1:
+        return "checkout details page"
+      case 2:
+        return "payment page"
+      case 3:
+        return "details"
+      default:
+        return "details page"
+    }
+  };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-      className="checkout"
-    >
-       CheckoutWizzard Page
-    </motion.div>
+    <div className="checkout">
+      <WizardStepper currentStep={checkoutStep} />
+      <div className="checkout__content">{renderStep()}</div>
+    </div>
   );
 };
 
-export default CheckoutWizzard;
+export default CheckoutWizard;
