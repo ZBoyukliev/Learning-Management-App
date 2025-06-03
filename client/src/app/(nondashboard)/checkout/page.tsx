@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const Checkout = () => {
+const CheckoutWizzard = () => {
 
   return (
     <motion.div
@@ -11,9 +11,9 @@ const Checkout = () => {
       transition={{ duration: 0.5 }}
       className="checkout"
     >
-       Checkout Page
+       CheckoutWizzard Page
     </motion.div>
   );
 };
 
-export default Checkout;
+export default CheckoutWizzard;
