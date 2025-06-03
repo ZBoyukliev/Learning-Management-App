@@ -59,16 +59,16 @@ const customBaseQuery = async (
 };
 
 export const api = createApi({
-    // baseQuery: fetchBaseQuery({baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL}),
-    baseQuery: customBaseQuery,
-    reducerPath: "api",
-    tagTypes: ["Courses", "Users", "UserCourseProgress"],
-    endpoints: (build) => ({
-        /* 
-    ===============
-    USER CLERK
-    =============== 
-    */
+  // baseQuery: fetchBaseQuery({baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL}),
+  baseQuery: customBaseQuery,
+  reducerPath: "api",
+  tagTypes: ["Courses", "Users", "UserCourseProgress"],
+  endpoints: (build) => ({
+    /* 
+===============
+USER CLERK
+=============== 
+*/
     updateUser: build.mutation<User, Partial<User> & { userId: string }>({
       query: ({ userId, ...updatedUser }) => ({
         url: `users/clerk/${userId}`,
@@ -77,9 +77,9 @@ export const api = createApi({
       }),
       invalidatesTags: ["Users"],
     }),
-         /* ===============
-               COURSES
-         =============== */
+    /* ===============
+          COURSES
+    =============== */
     getCourses: build.query<Course[], { category?: string }>({
       query: ({ category }) => ({
         url: "courses",
@@ -92,7 +92,24 @@ export const api = createApi({
       query: (id) => `courses/${id}`,
       providesTags: (result, error, id) => [{ type: "Courses", id }],
     }),
-    }),
-  });
 
-  export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery} = api;
+
+    /* 
+ ===============
+ TRANSACTIONS
+ =============== 
+ */
+    createStripePaymentIntent: build.mutation<
+      { clientSecret: string },
+      { amount: number }
+    >({
+      query: ({ amount }) => ({
+        url: `/transactions/stripe/payment-intent`,
+        method: "POST",
+        body: { amount },
+      }),
+    }),
+  }),
+});
+
+export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery, useCreateStripePaymentIntentMutation } = api;
