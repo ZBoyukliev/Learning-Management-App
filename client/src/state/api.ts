@@ -116,8 +116,8 @@ USER CLERK
         body: transaction,
       }),
     }),
-    
+
   }),
 });
 
-export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery, useCreateStripePaymentIntentMutation } = api;
+export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery, useCreateStripePaymentIntentMutation, useCreateTransactionMutation } = api;
