@@ -109,6 +109,14 @@ USER CLERK
         body: { amount },
       }),
     }),
+      createTransaction: build.mutation<Transaction, Partial<Transaction>>({
+      query: (transaction) => ({
+        url: "transactions",
+        method: "POST",
+        body: transaction,
+      }),
+    }),
+    
   }),
 });
 
