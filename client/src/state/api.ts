@@ -99,6 +99,9 @@ USER CLERK
  TRANSACTIONS
  =============== 
  */
+    getTransactions: build.query<Transaction[], string>({
+      query: (userId) => `transactions?userId=${userId}`,
+    }),
     createStripePaymentIntent: build.mutation<
       { clientSecret: string },
       { amount: number }
@@ -109,7 +112,7 @@ USER CLERK
         body: { amount },
       }),
     }),
-      createTransaction: build.mutation<Transaction, Partial<Transaction>>({
+    createTransaction: build.mutation<Transaction, Partial<Transaction>>({
       query: (transaction) => ({
         url: "transactions",
         method: "POST",
@@ -120,4 +123,11 @@ USER CLERK
   }),
 });
 
-export const { useUpdateUserMutation, useGetCourseQuery, useGetCoursesQuery, useCreateStripePaymentIntentMutation, useCreateTransactionMutation } = api;
+export const {
+  useUpdateUserMutation,
+  useGetCourseQuery,
+  useGetCoursesQuery,
+  useCreateStripePaymentIntentMutation,
+  useCreateTransactionMutation,
+  useGetTransactionsQuery
+} = api;
