@@ -23,3 +23,5 @@ router.post(
   "/:courseId/sections/:sectionId/chapters/:chapterId/get-upload-url",
   requireAuth(),
 );
+
+export default router;
