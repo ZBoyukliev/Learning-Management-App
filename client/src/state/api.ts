@@ -94,6 +94,18 @@ USER CLERK
       providesTags: (result, error, id) => [{ type: "Courses", id }],
     }),
 
+      createCourse: build.mutation<
+      Course,
+      { teacherId: string; teacherName: string }
+    >({
+      query: (body) => ({
+        url: `courses`,
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["Courses"],
+    }),
+
     updateCourse: build.mutation<
       Course,
       { courseId: string; formData: FormData }
@@ -106,6 +118,14 @@ USER CLERK
       invalidatesTags: (result, error, { courseId }) => [
         { type: "Courses", id: courseId },
       ],
+    }),
+
+     deleteCourse: build.mutation<{ message: string }, string>({
+      query: (courseId) => ({
+        url: `courses/${courseId}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Courses"],
     }),
 
     /* 
@@ -139,6 +159,9 @@ USER CLERK
 
 export const {
   useUpdateUserMutation,
+  useCreateCourseMutation,
+  useUpdateCourseMutation,
+  useDeleteCourseMutation,
   useGetCourseQuery,
   useGetCoursesQuery,
   useCreateStripePaymentIntentMutation,
