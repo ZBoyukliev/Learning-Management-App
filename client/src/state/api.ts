@@ -77,6 +77,7 @@ USER CLERK
       }),
       invalidatesTags: ["Users"],
     }),
+
     /* ===============
           COURSES
     =============== */
@@ -93,6 +94,19 @@ USER CLERK
       providesTags: (result, error, id) => [{ type: "Courses", id }],
     }),
 
+    updateCourse: build.mutation<
+      Course,
+      { courseId: string; formData: FormData }
+    >({
+      query: ({ courseId, formData }) => ({
+        url: `courses/${courseId}`,
+        method: "PUT",
+        body: formData,
+      }),
+      invalidatesTags: (result, error, { courseId }) => [
+        { type: "Courses", id: courseId },
+      ],
+    }),
 
     /* 
  ===============
