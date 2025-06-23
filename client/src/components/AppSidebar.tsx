@@ -53,6 +53,8 @@ const AppSidebar = () => {
     (user.publicMetadata.userType as "student" | "teacher") || "student";
   const currentNavLinks = navLinks[userType];
 
+  console.log("userType:", userType, "currentNavLinks:", currentNavLinks);
+
   return (
     <Sidebar
       collapsible="icon"
@@ -86,7 +88,8 @@ const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu className="app-sidebar__nav-menu">
-          {currentNavLinks.map((link) => {
+          {Array.isArray(currentNavLinks) && currentNavLinks.map((link) => {
+            console.log(link)
             const isActive = pathname.startsWith(link.href);
             return (
               <SidebarMenuItem
