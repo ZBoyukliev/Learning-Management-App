@@ -3,7 +3,7 @@
 import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 // import TeacherCourseCard from "@/components/TeacherCourseCard";
-// import Toolbar from "@/components/Toolbar";
+import Toolbar from "@/components/Toolbar";
 import { Button } from "@/components/ui/button";
 import {
   useCreateCourseMutation,
@@ -83,10 +83,10 @@ const Courses = () => {
           </Button>
         }
       />
-      {/* <Toolbar
+      <Toolbar
         onSearch={setSearchTerm}
         onCategoryChange={setSelectedCategory}
-      /> */}
+      />
       <div className="teacher-courses__grid">
         {filteredCourses.map((course) => (
         //   <TeacherCourseCard
