@@ -59,16 +59,15 @@ const customBaseQuery = async (
 };
 
 export const api = createApi({
-  // baseQuery: fetchBaseQuery({baseUrl: process.env.NEXT_PUBLIC_API_BASE_URL}),
   baseQuery: customBaseQuery,
   reducerPath: "api",
   tagTypes: ["Courses", "Users", "UserCourseProgress"],
   endpoints: (build) => ({
     /* 
-===============
-USER CLERK
-=============== 
-*/
+    ===============
+    USER CLERK
+    =============== 
+    */
     updateUser: build.mutation<User, Partial<User> & { userId: string }>({
       query: ({ userId, ...updatedUser }) => ({
         url: `users/clerk/${userId}`,
@@ -78,9 +77,11 @@ USER CLERK
       invalidatesTags: ["Users"],
     }),
 
-    /* ===============
-          COURSES
-    =============== */
+    /* 
+    ===============
+    COURSES
+    =============== 
+    */
     getCourses: build.query<Course[], { category?: string }>({
       query: ({ category }) => ({
         url: "courses",
@@ -94,7 +95,7 @@ USER CLERK
       providesTags: (result, error, id) => [{ type: "Courses", id }],
     }),
 
-      createCourse: build.mutation<
+    createCourse: build.mutation<
       Course,
       { teacherId: string; teacherName: string }
     >({
@@ -120,7 +121,7 @@ USER CLERK
       ],
     }),
 
-     deleteCourse: build.mutation<{ message: string }, string>({
+    deleteCourse: build.mutation<{ message: string }, string>({
       query: (courseId) => ({
         url: `courses/${courseId}`,
         method: "DELETE",
@@ -128,11 +129,28 @@ USER CLERK
       invalidatesTags: ["Courses"],
     }),
 
+    getUploadVideoUrl: build.mutation<
+      { uploadUrl: string; videoUrl: string },
+      {
+        courseId: string;
+        chapterId: string;
+        sectionId: string;
+        fileName: string;
+        fileType: string;
+      }
+    >({
+      query: ({ courseId, sectionId, chapterId, fileName, fileType }) => ({
+        url: `courses/${courseId}/sections/${sectionId}/chapters/${chapterId}/get-upload-url`,
+        method: "POST",
+        body: { fileName, fileType },
+      }),
+    }),
+
     /* 
- ===============
- TRANSACTIONS
- =============== 
- */
+    ===============
+    TRANSACTIONS
+    =============== 
+    */
     getTransactions: build.query<Transaction[], string>({
       query: (userId) => `transactions?userId=${userId}`,
     }),
@@ -154,6 +172,64 @@ USER CLERK
       }),
     }),
 
+    /* 
+    ===============
+    USER COURSE PROGRESS
+    =============== 
+    */
+    getUserEnrolledCourses: build.query<Course[], string>({
+      query: (userId) => `users/course-progress/${userId}/enrolled-courses`,
+      providesTags: ["Courses", "UserCourseProgress"],
+    }),
+
+    getUserCourseProgress: build.query<
+      UserCourseProgress,
+      { userId: string; courseId: string }
+    >({
+      query: ({ userId, courseId }) =>
+        `users/course-progress/${userId}/courses/${courseId}`,
+      providesTags: ["UserCourseProgress"],
+    }),
+
+    updateUserCourseProgress: build.mutation<
+      UserCourseProgress,
+      {
+        userId: string;
+        courseId: string;
+        progressData: {
+          sections: SectionProgress[];
+        };
+      }
+    >({
+      query: ({ userId, courseId, progressData }) => ({
+        url: `users/course-progress/${userId}/courses/${courseId}`,
+        method: "PUT",
+        body: progressData,
+      }),
+      invalidatesTags: ["UserCourseProgress"],
+      async onQueryStarted(
+        { userId, courseId, progressData },
+        { dispatch, queryFulfilled }
+      ) {
+        const patchResult = dispatch(
+          api.util.updateQueryData(
+            "getUserCourseProgress",
+            { userId, courseId },
+            (draft) => {
+              Object.assign(draft, {
+                ...draft,
+                sections: progressData.sections,
+              });
+            }
+          )
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
+    }),
   }),
 });
 
@@ -162,9 +238,13 @@ export const {
   useCreateCourseMutation,
   useUpdateCourseMutation,
   useDeleteCourseMutation,
-  useGetCourseQuery,
   useGetCoursesQuery,
-  useCreateStripePaymentIntentMutation,
+  useGetCourseQuery,
+  useGetUploadVideoUrlMutation,
+  useGetTransactionsQuery,
   useCreateTransactionMutation,
-  useGetTransactionsQuery
+  useCreateStripePaymentIntentMutation,
+  useGetUserEnrolledCoursesQuery,
+  useGetUserCourseProgressQuery,
+  useUpdateUserCourseProgressMutation,
 } = api;
