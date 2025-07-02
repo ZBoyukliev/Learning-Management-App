@@ -3,7 +3,6 @@
 import Header from "@/components/Header";
 import Loading from "@/components/Loading";
 import TeacherCourseCard from "@/components/TeacherCourseCard";
-// import TeacherCourseCard from "@/components/TeacherCourseCard";
 import Toolbar from "@/components/Toolbar";
 import { Button } from "@/components/ui/button";
 import {
