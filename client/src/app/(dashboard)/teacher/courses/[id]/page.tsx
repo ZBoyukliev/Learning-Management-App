@@ -69,7 +69,7 @@ const CourseEditor = () => {
         getUploadVideoUrl
       );
 
-      const formData = createCourseFormData(data, sections);
+      const formData = createCourseFormData(data, updatedSections);
 
       await updateCourse({
         courseId: id,
